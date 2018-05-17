@@ -16,6 +16,7 @@ namespace StateTaxTests
             var resposta = await scrap.PreScrap();
             //assert
             Assert.Equal(200, resposta);
+            Console.WriteLine(resposta);
         }
         [Fact]
         public async Task ScrapGet_whenGetIsNotValid_Return400()
@@ -42,6 +43,21 @@ namespace StateTaxTests
             //assert
             Assert.NotNull(resp);
             //Assert.Equal(resp, respostaPost);
+        }
+
+        [Fact]
+        public async Task ScrapPost_whenPostIsInvalid_return400()
+        {
+            //arrange
+            var scrap = new Scrap();
+            var respostaPost = "11111111111111";
+
+            //act
+            var resp = await scrap.ScrapPost(respostaPost);
+            
+            //assert
+            Assert.NotNull(resp);
+            //Assert.Equal(resp,respostaPost);
         }
     }
 }

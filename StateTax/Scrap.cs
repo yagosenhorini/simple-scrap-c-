@@ -13,7 +13,6 @@ namespace StateTax
 
         public async Task<int> PreScrap()
         {
-            
            var retorno = await HttpWebResponse.GetAsync(UrlGet);
             if (retorno.Contains("Cadastro de Contribuinte Nacional"))
             {
@@ -27,7 +26,6 @@ namespace StateTax
             var data = $"tipoDocumento=cnpj&numrDocumento={cnpj}&btnSubmit=";
             var content = "application/x-www-form-urlencoded";
             var retorno = await HttpWebResponse.PostAsync(UrlPost, data, content);
-
             return retorno;
         }
     }
